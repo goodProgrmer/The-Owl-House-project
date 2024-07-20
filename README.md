@@ -7,4 +7,8 @@ user manual:
 6. In the shell, type in the IP of the server next to the prompt "server ip:". NOTE: type in the public IP of the computer with the server (if you will type 127.0.0.1 it will cause problems in online matches). If you want to play offline, press enter or type any incorrect IP address. NOTE: you can check your IP by running "ipconfig" in the command prompt (on windows).
 7. you may avoid anything the program prints in the shell from that point and start playing.
 
+the default keys are: 
+For online: w,a,s,d,i,o,j,k,l
+For offline match:  w,a,s,d,z,x,c,v,b for charcter 1 and up,down,left,right,i,o,j,k,l
+
 NOTE: the online modes only work between two computers in the same network.
