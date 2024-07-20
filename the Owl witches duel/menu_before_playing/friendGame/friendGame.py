@@ -263,7 +263,7 @@ def main():
                     try:
                         fromMe_user_propse[user]
                     except:
-                        gameProposalsFromMe.append(gameProposal(FROMME_PRO_X,-1000,(200,200,200),["cancle"],[(0,0,255)],
+                        gameProposalsFromMe.append(gameProposal(FROMME_PRO_X,-1000,(200,200,200),["cancel"],[(0,0,255)],
                                                   [lambdaFconstractor(cancleOnClick,user)],user))
                         fromMe_user_propse[user]= gameProposalsFromMe[-1]
                 elif len(serverMsg)==1 and serverMsg[0]=="ANCORRECT ADDRESS WINDOW":
@@ -281,9 +281,9 @@ def main():
                         toMe_user_propse[user]= gameProposalsToMe[-1]
 
             #peropose text creating
-            text = font.render("porposed to me games", True, (140, 150, 0))
+            text = font.render("proposed to me games", True, (140, 150, 0))
             global_var.screen.blit(text,(TOME_PRO_X,10))
-            text = font.render("porposed by me games", True, (140, 150, 0))
+            text = font.render("proposed by me games", True, (140, 150, 0))
             global_var.screen.blit(text,(FROMME_PRO_X,10))
             
             #Y correcting

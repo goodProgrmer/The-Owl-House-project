@@ -193,7 +193,7 @@ def main():
                         print(TCP_meseg)
                         done = True
                         global_var.nextRunFileName= afterPlaying
-                        global_var.data= "the second player went of the game"
+                        global_var.data= "the second player quit the game"
                         break
                 if TCP_meseg=="COUNT":
                         if count():

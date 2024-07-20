@@ -265,7 +265,7 @@ def main():
                                         done= True
                                         break_loop=True
                                         global_var.nextRunFileName= afterPlaying
-                                        global_var.data= "the second player went of the game"
+                                        global_var.data= "the second player quit the game"
                                 if clintTCPmeseg=="SPACE":
                                         agreed[1]= True
                         
