@@ -63,11 +63,11 @@ def main():
     muteText= "unmute"
     if global_var.bg_music:
         muteText= "mute"
-    buttons= [button(cancle,(20,20,200,75),(255,0,0),"cancle"),button(lambda: mute("bg_music",1),(400,360,150,100),(255,0,0),muteText)]
+    buttons= [button(cancle,(20,20,200,75),(255,0,0),"cancel"),button(lambda: mute("bg_music",1),(400,360,150,100),(255,0,0),muteText)]
 
     buttons.append(button(save,(750,550,100,75),(255,0,0),"save"))
     buttons.append(button(lambda: toOtherFile("settings.onePlayer"),(250,20,200,75),(255,0,0),"one player"))
-    buttons.append(button(lambda: toOtherFile("settings.twoPlayers"),(500,20,200,75),(255,0,0),"two player"))
+    buttons.append(button(lambda: toOtherFile("settings.twoPlayers"),(500,20,200,75),(255,0,0),"two players"))
     buttons.append(button(lambda:  print("unabled"),(750,20,200,75),(255,0,0),"sound", image= pygame.image.load("images/system image/gray button.png"), onpose_img= None))
     
     while not done:

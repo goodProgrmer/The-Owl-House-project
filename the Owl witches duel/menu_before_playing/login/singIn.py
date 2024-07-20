@@ -42,7 +42,7 @@ def main():
     little_font= pygame.font.SysFont("Algerian", 23)
     title_font= pygame.font.SysFont("Algerian", 50)
     
-    texts= [((740,160),title_font.render("Sing in", True, (186, 201, 0))),
+    texts= [((740,160),title_font.render("Sing up", True, (186, 201, 0))),
             ((450,300),font.render("username:", True, (186, 201, 0))),
             ((450,435),font.render("password:", True, (186, 201, 0))),
             ((450,225),little_font.render("ure password must be at least 8 characters", True, (186, 201, 0))),

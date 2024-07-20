@@ -90,7 +90,7 @@ def main():
     key_button=  pygame.image.load("images/system image/key button.png")
     key_button_pressed= pygame.image.load("images/system image/key button pressed.png")
     
-    buttons=[button(cancle,(20,20,200,75),(255,0,0),"cancle")]
+    buttons=[button(cancle,(20,20,200,75),(255,0,0),"cancel")]
     b_place= [[(400,300),(600,300),(500,200),(500,300),
               (800,200),(900,200),(800,300),(900,300),(1000,300)],
               [(400,550),(600,550),(500,450),(500,550),
@@ -104,7 +104,7 @@ def main():
 
     buttons.append(button(save,(1200,400,100,75),(255,0,0),"save"))
     buttons.append(button(lambda: toOtherFile("settings.onePlayer"),(250,20,200,75),(255,0,0),"one player"))
-    buttons.append(button(lambda: print("unabled"),(500,20,200,75),(255,0,0),"two player", image= pygame.image.load("images/system image/gray button.png"), onpose_img= None))
+    buttons.append(button(lambda: print("unabled"),(500,20,200,75),(255,0,0),"two players", image= pygame.image.load("images/system image/gray button.png"), onpose_img= None))
     buttons.append(button(lambda: toOtherFile("settings.sound"),(750,20,200,75),(255,0,0),"sound"))
     
     while not done:

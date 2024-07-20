@@ -32,7 +32,7 @@ def main():
 
     buttons=[button(lambda: toOtherFile("menu_before_playing.mane_menu"),(20,20,200,50),(255,0,0),"back"),
              button(sendrequest,(700,600,200,50),(255,0,0),"login"),
-             button(lambda: toOtherFile("menu_before_playing.login.singIn"),(1280,20,200,50),(255,0,0),"sign in")]
+             button(lambda: toOtherFile("menu_before_playing.login.singIn"),(1280,20,200,50),(255,0,0),"sign up")]
     username= None
 
     font= pygame.font.SysFont("Algerian", 30)

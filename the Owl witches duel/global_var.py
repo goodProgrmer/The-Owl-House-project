@@ -238,7 +238,7 @@ def before_menu_screen_display():
     
     if is_connected:
         font= pygame.font.SysFont("Arial", 40)
-        screen.blit(font.render("conected", True, (0, 0, 0)),(850,710))
+        screen.blit(font.render("connected", True, (0, 0, 0)),(850,710))
     else:
         font= pygame.font.SysFont("Arial", 40)
         screen.blit(font.render("no connection", True, (0, 0, 0)),(850,710))
