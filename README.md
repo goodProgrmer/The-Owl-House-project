@@ -8,7 +8,9 @@ user manual:
 7. you may avoid anything the program prints in the shell from that point and start playing.
 
 the default keys are: 
-For online match: w,a,s,d,i,o,j,k,l
-For offline match:  w,a,s,d,z,x,c,v,b for charcter 1 and up,down,left,right,i,o,j,k,l
+For online: w,a,s,d (for movement) and i,o,j,k,l (for actions)
+For offline:
+Character 1: w,a,s,d (for movement) and z,x,c,v,b (for actions)
+Character 2: arrow keys (for movement) and i,o,j,k,l (for actions)
 
 NOTE: the online modes only work between two computers in the same network.
