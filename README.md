@@ -8,7 +8,7 @@ user manual:
 7. you may avoid anything the program prints in the shell from that point and start playing.
 
 the default keys are: 
-For online: w,a,s,d,i,o,j,k,l
+For online match: w,a,s,d,i,o,j,k,l
 For offline match:  w,a,s,d,z,x,c,v,b for charcter 1 and up,down,left,right,i,o,j,k,l
 
 NOTE: the online modes only work between two computers in the same network.
