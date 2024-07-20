@@ -1,5 +1,5 @@
 user manual:
-1. downlowed the zip to your computer.
+1. download the zip to your computer.
 2. you shoald have working python on your computer to run this game.
 3. run the installation.py file.
 4. run the server/server.py if you want play online (not nesesery).
