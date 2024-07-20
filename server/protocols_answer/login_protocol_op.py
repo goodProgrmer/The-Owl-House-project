@@ -131,7 +131,8 @@ def LogIn(sock,username,password):
         if user_pass[username]==password:
             print(0)
             if is_loged(username):
-                raise Exception("the user "+username+"already loged in")
+                taken(sock)
+                return
             print(0.5)
             sending_sock_key=get_sending_sock_key()
             signutures_dic= get_sending_signature()

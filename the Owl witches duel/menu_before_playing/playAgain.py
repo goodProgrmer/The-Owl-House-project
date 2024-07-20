@@ -50,7 +50,7 @@ def main():
 
     buttons=[button(lambda: refuse("menu_before_playing.game_menu"),(500,350,200,100),(255,0,0),"to menu"),
              button(lambda: refuse("menu_before_playing.char_choose.choose"),(800,350,400,100),(255,0,0),"new random game"),
-             button(lambda: repit(),(800,600,100,60),(255,0,0),"repit")]
+             button(lambda: repit(),(775,600,150,60),(255,0,0),"repeat")]
 
     font= pygame.font.SysFont("Algerian", 30)
     winerText= font.render(global_var.data, True, (186, 201, 0))

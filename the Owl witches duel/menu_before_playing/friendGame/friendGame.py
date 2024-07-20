@@ -161,7 +161,7 @@ def send_ask():
     user= tEnter.get_text()
     
     if user== global_var.username:
-        global_var.alert_data= ("you tried to send meseg for yourself",(600,10,320,100))
+        global_var.alert_data= ("can not challenge yourself",(600,10,320,100))
     else:
         sockF.sendMesegTCP(global_var.server_TCP_sock,"GAME|FRIEND GAME|"+user)
     tEnter.set_text("")
@@ -267,7 +267,7 @@ def main():
                                                   [lambdaFconstractor(cancleOnClick,user)],user))
                         fromMe_user_propse[user]= gameProposalsFromMe[-1]
                 elif len(serverMsg)==1 and serverMsg[0]=="ANCORRECT ADDRESS WINDOW":
-                    global_var.alert_data= ("your friend doesn't wating for you",(600,10,300,100))
+                    global_var.alert_data= ("friend isn't on this screen",(600,10,300,100))
                     print("your friend doesn't wating for you")
                 elif len(serverMsg)==2 and serverMsg[0]=="FRIEND GAME":
                     user= serverMsg[1]

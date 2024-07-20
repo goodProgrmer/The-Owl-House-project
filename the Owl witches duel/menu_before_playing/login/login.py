@@ -65,6 +65,8 @@ def main():
                 print(serverMsg)
                 if len(serverMsg)==1 and serverMsg[0]=="UNCORRECT CERTIFICATES":
                     global_var.alert_data= ("username or password is wrong",(600,10,300,100))
+                if len(serverMsg)==1 and serverMsg[0]=="TAKEN USERNAME":
+                    global_var.alert_data= ("this user is already loged in",(600,10,300,100))
                 if len(serverMsg)==2 and serverMsg[0]=="DONE":
                     global_var.from_str_to_settings(serverMsg[1])
                     global_var.sound_volume_correct()
