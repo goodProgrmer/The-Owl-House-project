@@ -12,8 +12,7 @@ import TheMainGame.for_commands_sending.drawIncreption as drawIncreption
 import TheMainGame.for_commands_sending.drewDecription as drewDecription
 from TheMainGame.for_commands_sending.sendingOperations import*
 import TheMainGame.for_commands_sending.sounds as sounds
-from TheMainGame.side_functions import count
-from TheMainGame.side_functions import loading_display
+from TheMainGame.side_functions import*
 import TheMainGame.datafiles.imeges
 import global_var
 import threading
@@ -203,6 +202,9 @@ def loading(loading_end):
         else:
                 agreed=[False]
 
+        #tutorial loading
+        tutorial_paint_init(2,pButtons,[charOne,charTwo])
+
         #loading ending
         loading_end[0]= True
         print("done")
@@ -328,6 +330,8 @@ def main():
                         drewDecription.decription(screen,drawIncreption.drawStrings[0])
                         pygame.draw.rect(screen,(100,100,100), pygame.Rect(0,600,1500,600))
                         global_var.screen.blit(bg,(0,0))
+                        if i==0:
+                                tutorial_paint(2)
                         
                         #checking does it need to turn of the keys trening
                         if i==0 and all_True(agreed):
