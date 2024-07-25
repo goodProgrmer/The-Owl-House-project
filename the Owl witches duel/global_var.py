@@ -43,6 +43,7 @@ def init():
     global bg_music_volume
     global down_info_img
     global alert_data
+    global fan_made_logo
     
     data=None #information pasing bitween windows (that not one of the folowing veriables)
 
@@ -78,6 +79,7 @@ def init():
     wind_chenge_t=0 #store the time since last window change in frame (don't raise up if it more then glitterT)
     prew_window_screen= None
     down_info_img= pygame.transform.scale(pygame.image.load("images/system image/down info image.PNG"),(1500,100))
+    fan_made_logo= pygame.image.load("images/system image/fan made.PNG")
 
     alert_data= None
 
@@ -231,6 +233,7 @@ def before_menu_screen_display():
 
     #bottom info line drawing
     screen.blit(down_info_img,(0,700))
+    screen.blit(fan_made_logo,(1250,10))
     #pygame.draw.rect(screen,(25,25,25),pygame.Rect(0,700,2000,200))
     if username!=None:
         font= pygame.font.SysFont("Arial", 40)
