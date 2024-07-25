@@ -14,7 +14,7 @@ class hunter(absCaracter):
 
         #parameters for quick change
         self.telportDistens=300
-        self.times= [-20,0,-20,0,-20]
+        self.times= [-200,0,-200,0,-200]
         
         #[0]- time of last op1 activate
         #[1]- time from last op2 activate (0 if you can activ it now)

@@ -131,6 +131,7 @@ def init():
     global sock_username
     global sock_connect_msg
     global signed_in_usernames
+    global online_matches
     
     protocols_answer.login_protocol_op.init()
     sending_data_init()
@@ -157,3 +158,6 @@ def init():
     #sock_q_dict= {} #store for every socket, pointer to its lst in sock_last_contect_q
 
     signed_in_usernames= {} #including the temple ones
+
+    #for statistic
+    online_matches=0

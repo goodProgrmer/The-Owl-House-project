@@ -11,8 +11,7 @@ import TheMainGame.for_commands_sending.drawIncreption as drawIncreption
 import TheMainGame.for_commands_sending.drewDecription as drewDecription
 from TheMainGame.for_commands_sending.sendingOperations import*
 import TheMainGame.datafiles.imeges
-from TheMainGame.side_functions import count
-from TheMainGame.side_functions import loading_display
+from TheMainGame.side_functions import*
 import time
 import global_var
 import shutil
@@ -48,7 +47,7 @@ def loading(loading_end):
 
         UDPsock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         server_addressUDP = (SERVER_IP, 8810)
-        UDPsock.bind(("0.0.0.0", 8810))
+        UDPsock.bind(("0.0.0.0", 8800))
         UDPsock.settimeout(0.005)
 
         TCPsock = socket.socket()
@@ -119,7 +118,8 @@ def loading(loading_end):
 
         TheMainGame.datafiles.imeges.imegesDict["V"]= pygame.transform.scale(pygame.image.load("images/system image/V.png"), (100,100))
         TheMainGame.datafiles.imeges.imegesDict["q"]= pygame.transform.scale(pygame.image.load("images/system image/q_mark.png"), (100,100))
-
+        tutorial_paint_init([[]]+global_var.buttons1P,[char1,character])
+        
         loading_end[0]= True
         print("done")
 
@@ -207,6 +207,8 @@ def main():
                 drewDecription.decription(screen,drawStr)
                 #pygame.draw.rect(screen,(100,100,100), pygame.Rect(0,600,1500,600))
                 global_var.screen.blit(bg,(0,0))
+                if not space_passed:
+                        tutorial_paint([False,True])
                 global_var.before_menu_screen_display()
                 pygame.display.flip()
                 t+=1

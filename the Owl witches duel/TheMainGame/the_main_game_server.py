@@ -109,7 +109,7 @@ def loading(loading_end):
                 server_socketTCP.bind(("0.0.0.0", 8809))
                 server_socketTCP.listen()
                 (clientTCP_sock,cliantAdressTCP)=server_socketTCP.accept()
-                cliantAdressUPD=(cliantAdressTCP[0],8810)
+                cliantAdressUPD=(cliantAdressTCP[0],8800)
                 
                 server_socketUPD = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
                 server_socketUPD.bind(("0.0.0.0", 8810))
@@ -203,7 +203,10 @@ def loading(loading_end):
                 agreed=[False]
 
         #tutorial loading
-        tutorial_paint_init(2,pButtons,[charOne,charTwo])
+        if not plaingOnline:
+                tutorial_paint_init(pButtons,[charOne,charTwo])
+        else:
+                tutorial_paint_init(pButtons+[[]],[charOne,charTwo])
 
         #loading ending
         loading_end[0]= True
@@ -331,7 +334,10 @@ def main():
                         pygame.draw.rect(screen,(100,100,100), pygame.Rect(0,600,1500,600))
                         global_var.screen.blit(bg,(0,0))
                         if i==0:
-                                tutorial_paint(2)
+                                if not plaingOnline:
+                                        tutorial_paint([True,True])
+                                else:
+                                        tutorial_paint([True,False])
                         
                         #checking does it need to turn of the keys trening
                         if i==0 and all_True(agreed):

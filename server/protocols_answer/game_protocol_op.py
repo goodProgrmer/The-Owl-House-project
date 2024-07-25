@@ -1,4 +1,5 @@
 from protocols_answer.sendingOperations import*
+import global_server_op
 import random
 users_data={}
 #data is list with length 5 when
@@ -272,6 +273,7 @@ def New_game(p1,p2):
     if chosenPlayer==2:
         p1,p2=p2,p1
 
+    global_server_op.online_matches+=1
     print("new game 3")
     gaming_meeting[p1]=[p1,p2,False,False]
     gaming_meeting[p2]=gaming_meeting[p1]

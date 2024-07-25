@@ -283,6 +283,15 @@ class fireBall(absErrow):
         self.y-=r
         self.size=[2*r,2*r]
 
+        if 5*pi/4<a<=7*pi/4:
+            self.img= "luz/fireballU"
+        elif pi/4<a<=3*pi/4:
+            self.img= "luz/fireballD"
+        elif 3*pi/4<a<=5*pi:
+            self.img= "luz/fireballL"
+        else:
+            self.img= "luz/fireballR"
+
     def isHit(self):
         for en in self.maneAnemy.supporters:
             if max(self.x-self.r,en.x)<min(self.x+self.r, en.x+en.size[0]) and max(self.y-self.r,en.y)<min(self.y+self.r, en.y+en.size[1]):
@@ -320,7 +329,7 @@ class fireBall(absErrow):
         
     def paint(self):
         #circleDrewIncription((255,0,0),self.r,(self.x+self.r,self.y+self.r))
-        blitIncription("luz/fireball",(self.x-40,self.y-40))
+        blitIncription(self.img,(self.x-40,self.y-40))
         if global_var.display_rects:
             self.hitingPpaint()
     def hitingPpaint(self):

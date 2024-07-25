@@ -9,9 +9,22 @@ import time
 import threading
 import global_server_op
 
+def statistic_write():
+    while True:
+        f= open("data/user-pass.txt","r")
+        loge_num= f.read().count("\n")
+        f.close()
+        to_write=("loged usernames num:"+str(loge_num)+"\nusers in the game num:"+str(len(list(global_server_op.sock_username.keys())))+
+                  "\nplayed online games:"+str(global_server_op.online_matches))
+        f= open("statistic.txt","w")
+        f.write(to_write)
+        f.close()
+        time.sleep(180)
+
 def main():
     """running the server."""
     global_server_op.init()
+    threading.Thread(target= statistic_write).start()
     print("server is up and running")
 
     while True:

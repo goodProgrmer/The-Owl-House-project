@@ -87,9 +87,9 @@ def loading_display(end):
         clock.tick(30)
     return False
 
-def tutorial_paint_init(num_of_P,keys,chars):
-    if num_of_P==2:
-        char_str= {"hunter":"""-telport forword
+def tutorial_paint_init(keys,chars):
+    #keys[i]==[] if the player dont play from this computer
+    char_str= {"hunter":"""-telport forword
 -regular kik
 -teleport to the enemy
 -ground kik
@@ -110,29 +110,32 @@ def tutorial_paint_init(num_of_P,keys,chars):
 -delete anything from enemy screen
 -20 clones
 -flying"""}
-        font1= pygame.font.SysFont("Arial", 20) #for the key text
-        tutorial= pygame.transform.scale(pygame.image.load("TheMainGame/images/tutorial.png"),(500,200))
-        tutorial_r= pygame.transform.flip(tutorial,True,False)
-        key_box= pygame.transform.scale(pygame.image.load("images/system image/key button.png"),(30,30))
-        key_surface= []
-        for i in range(len(keys)):
-            key_surface.append([])
-            for j in range(len(keys[i])):
-                key= keys[i][j]
-                text= font1.render(toChar(key), True, (186, 201, 0))
-                textRect = text.get_rect()
-                textRect.center= (key_box.get_width()/2, key_box.get_height()/2)
-                key_surface[-1].append(key_box.copy())
-                key_surface[-1][-1].blit(text,textRect)
-                #print(type(key_box),type(key_surface[-1][-1]))
+    font1= pygame.font.SysFont("Arial", 20) #for the key text
+    tutorial= pygame.transform.scale(pygame.image.load("TheMainGame/images/tutorial.png"),(500,200))
+    tutorial_r= pygame.transform.flip(tutorial,True,False)
+    key_box= pygame.transform.scale(pygame.image.load("images/system image/key button.png"),(30,30))
+    key_surface= []
+    for i in range(len(keys)):
+        key_surface.append([])
+        for j in range(len(keys[i])):
+            key= keys[i][j]
+            text= font1.render(toChar(key), True, (186, 201, 0))
+            textRect = text.get_rect()
+            textRect.center= (key_box.get_width()/2, key_box.get_height()/2)
+            key_surface[-1].append(key_box.copy())
+            key_surface[-1][-1].blit(text,textRect)
+            #print(type(key_box),type(key_surface[-1][-1]))
 
-        tutorial_blit(tutorial, 150, key_surface[0],char_str[chars[0]])
-        tutorial_blit(tutorial_r, 10, key_surface[1],char_str[chars[1]])
-        img_dict.imegesDict["tutorial"]= tutorial
-        img_dict.imegesDict["tutorial-r"]= tutorial_r
+    tutorial_blit(tutorial, 150, key_surface[0],char_str[chars[0]])
+    print(char_str,chars[1])
+    tutorial_blit(tutorial_r, 10, key_surface[1],char_str[chars[1]])
+    img_dict.imegesDict["tutorial"]= tutorial
+    img_dict.imegesDict["tutorial-r"]= tutorial_r
         
 
 def tutorial_blit(surface,x_start, key_surface,char_str):
+    if key_surface==[]:
+        return
     font2= pygame.font.SysFont("Algerian", 20) #for movemant label
     font3= pygame.font.SysFont("Algerian", 15) #for special op labels
     surface.blit(key_surface[0],(x_start,100))
@@ -163,9 +166,11 @@ def toChar(num):
         if num==pygame.K_DOWN:
             return u"\u2193"
 
-def tutorial_paint(num_of_P):
-    global_var.screen.blit(img_dict.imegesDict["tutorial"],(240,10))
-    global_var.screen.blit(img_dict.imegesDict["tutorial-r"],(760,10))
+def tutorial_paint(draw):
+    if draw[0]:
+        global_var.screen.blit(img_dict.imegesDict["tutorial"],(240,10))
+    if draw[1]:
+        global_var.screen.blit(img_dict.imegesDict["tutorial-r"],(760,10))
     
     
 
