@@ -1,3 +1,0 @@
-hanter/kikD/0:0,60
-hanter/kikD/2:5,60
-hanter/kikD/4:25,81
