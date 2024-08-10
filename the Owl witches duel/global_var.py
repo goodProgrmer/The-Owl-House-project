@@ -233,8 +233,8 @@ def before_menu_screen_display():
 
     #bottom info line drawing
     screen.blit(down_info_img,(0,700))
-    if curecnt_window!="TheMainGame.the_main_game_server" and curecnt_window!="TheMainGame.the_main_game_claint":
-        screen.blit(fan_made_logo,(1250,10))
+    if not curecnt_window in ["TheMainGame.the_main_game_server","TheMainGame.the_main_game_claint","TheMainGame.montaz_show"]:
+        screen.blit(fan_made_logo,(1250,500))
     #pygame.draw.rect(screen,(25,25,25),pygame.Rect(0,700,2000,200))
     if username!=None:
         font= pygame.font.SysFont("Arial", 40)
