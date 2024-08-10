@@ -21,7 +21,7 @@ class luz(absCaracter):
         self.LODING_ABILITIES_TIMES=[100,100,100,200] #[0]-light,[1]-ice,[2]-fire,[3]-plant
         self.MAX_ABILITY_STORAGE=3
 
-        self.lodedAbilitesClocks=[0,0,0,0] #[0]-light,[1]-ice,[2]-fire,[3]-plant
+        self.lodedAbilitesClocks=self.LODING_ABILITIES_TIMES.copy() #[0]-light,[1]-ice,[2]-fire,[3]-plant
 
         self.lookDirection="moveP"
         self.op5T=29
