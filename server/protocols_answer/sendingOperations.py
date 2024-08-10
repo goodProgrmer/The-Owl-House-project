@@ -60,7 +60,7 @@ def unpucketMasegTCP(sock):
         string= string[:-15]
         return string
     except Exception as exc:
-        #print("except:",exc)
+        print("except:",exc)
         return ""
 
 def get_public_key(sock,key):

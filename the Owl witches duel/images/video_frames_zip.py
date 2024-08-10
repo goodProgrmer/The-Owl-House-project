@@ -65,4 +65,4 @@ def zip_video_dir(directory):
     f.write(append_string)
     f.close()
 
-zip_video_dir("intro/intro")
+zip_video_dir("intro")

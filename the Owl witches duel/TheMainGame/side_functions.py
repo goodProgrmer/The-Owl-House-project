@@ -97,7 +97,7 @@ def tutorial_paint_init(keys,chars):
 -shild
 -creating golem
 -shoot slyme boble
--golem throw its head""","luz":"""-staning lightning
+-golem throw its head""","luz":"""-stanning lightning
 -ice wall
 -fire ball
 -plantes forword

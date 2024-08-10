@@ -18,13 +18,13 @@ def main():
     
     
     t=0
-    f= open("images/intro/intro/frames num.txt","r")
+    f= open("images/intro/frames num.txt","r")
     frame_num= int(f.read())
     f.close()
     references= {}
     for i in range(frame_num):
         references[i]= i
-    f= open("images/intro/intro/reference file.txt","r")
+    f= open("images/intro/reference file.txt","r")
     for line in f:
         splited= line.split("-")
         references[int(splited[0])]= int(splited[1])
@@ -44,7 +44,7 @@ def main():
             for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                             done = True
-            img= pygame.image.load("images/intro/intro/"+str(references[t])+".jpg")
+            img= pygame.image.load("images/intro/"+str(references[t])+".jpg")
             img= pygame.transform.scale(img, (1500,800))
             global_var.screen.blit(img,(0,0))
             if not is_first:

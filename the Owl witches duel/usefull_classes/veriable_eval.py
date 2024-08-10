@@ -89,5 +89,3 @@ def split_no_bracket(string):
 
     ans.append(string[slice_start:])
     return ans
-        
-print(type_eval('-0.7e-2'))

@@ -1,0 +1,3 @@
+loged usernames num:5
+users in the game num:0
+played online games:0

@@ -117,12 +117,19 @@ def main():
     X_img= pygame.transform.scale(pygame.image.load("images/system image/X.png"), (100,100))
     q_img= pygame.transform.scale(pygame.image.load("images/system image/q_mark.png"), (100,100))
 
+    if global_var.plaingOnline:
+        instractions= "choose 1 character"
+    else:
+        instractions= "choose 2 characters"
+    font= pygame.font.SysFont("Algerian", 50)
+    instractions= font.render(instractions,True,(186, 201, 0))
+
     for i in range(len(chars)):
         #print("menu_before_playing\\char_choose\\chars_profiles\\"+chars[i]+".png")
-        charImage= pygame.image.load("menu_before_playing\\char_choose\\chars_profiles\\"+chars[i]+".jpg")
+        charImage= pygame.image.load("menu_before_playing\\char_choose\\chars_profiles\\"+chars[i]+".png")
         f= chooseCharacterFuncGenerator(i)
         if i==4 and not global_var.plaingOnline:
-            charImage= pygame.image.load("menu_before_playing/char_choose/chars_profiles/unavilable gus.jpg")
+            charImage= pygame.image.load("menu_before_playing/char_choose/chars_profiles/unavilable gus.png")
             f= lambda: print("blocked")
             
         buttons.append(button(f,(startX+(choosing_button_size[0]+20)*i,startY,choosing_button_size[0],choosing_button_size[1]),(200,200,200)
@@ -170,6 +177,8 @@ def main():
             if not global_var.plaingOnline:
                 frameP= rectP(choosedCharP2,startP,choosing_button_size)
                 pygame.draw.rect(global_var.screen, (255,0,0), pygame.Rect(frameP[0],frameP[1],choosing_button_size[0],choosing_button_size[1]),width=5)
+
+            global_var.screen.blit(instractions,(525,475))
 
             global_var.before_menu_screen_display()
             pygame.display.flip()

@@ -44,6 +44,9 @@ def main():
                 continue
 
             msg= unpucketMasegTCP(sock)
+            if msg=="":
+                global_server_op.GExit(sock)
+                continue
             if msg!="":
                 print(msg,global_server_op.sock_username[sock])
             categoryInd= msg.find("|")
