@@ -76,7 +76,7 @@ class willow(absCaracter):
             self.times[0]=self.timeFromStart
             plantStartP=(self.x+self.size[0]/2,self.floorLevel)
             for i in range(3):
-                self.tickAbleCreatedObjects.append(botPlant(plantStartP[0],plantStartP[1],10,2,0.05,50,self,5,2,20,-pi/6-i*(pi/3)))
+                self.tickAbleCreatedObjects.append(botPlant(plantStartP[0],plantStartP[1],20,1,0.1,50,self,10,2,20,-pi/6-i*(pi/3)))
 
     def op2(self):
         """wall plant"""
@@ -88,9 +88,9 @@ class willow(absCaracter):
             self.times[1]=self.timeFromStart
             
             if self.lookDirection=="moveN":
-                self.tickAbleCreatedObjects.append(wallplant(self.x-30,self.floorLevel,10,self,5,2,25,0.2))
+                self.tickAbleCreatedObjects.append(wallplant(self.x-30,self.floorLevel,20,self,10,2,25,0.2))
             else:
-                self.tickAbleCreatedObjects.append(wallplant(self.x+self.size[0]+30,self.floorLevel,10,self,5,2,25,0.2))
+                self.tickAbleCreatedObjects.append(wallplant(self.x+self.size[0]+30,self.floorLevel,20,self,10,2,25,0.2))
         pass
     
     def op3(self):
@@ -499,7 +499,7 @@ class wallplant(plant):
     :type selfDemegMultipel: flout
     :type hpRedusingSpeed: flout"""
     def __init__(self,x,y,rootSize,perant,dxForRect,selfDemegMultipel,gerowTime,hpRedusingSpeed):
-        self.SPEED=2
+        self.SPEED=1
         super().__init__(x,y,rootSize,self.SPEED,0,100000,perant,dxForRect,selfDemegMultipel,0,10,0)
         self.gerowTime=gerowTime
         self.hpRedusingSpeed=hpRedusingSpeed
@@ -513,10 +513,10 @@ class wallplant(plant):
         """this plant start grow in cercle in the derection side
         :param side: the side to which this plant supposed to grow. side=-1 -left.side=1 -right.
         :type side: int (-1 or 1)"""
-        ATAK_ANGLE=0.03
+        ATAK_ANGLE=0.06
         DEMEG=2.15
         ATAK_T=20
-        SPEED=20
+        SPEED=10
         self.isAttacking=True
         self.torningMultiple=ATAK_ANGLE*side
         self.hitingDamage=DEMEG
