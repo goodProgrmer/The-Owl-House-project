@@ -248,7 +248,9 @@ def before_menu_screen_display():
         screen.blit(font.render("no connection", True, (0, 0, 0)),(850,710))
 
     #reload if necessary
-    if reload:
+    if curecnt_window in ["TheMainGame.the_main_game_server","TheMainGame.the_main_game_claint","TheMainGame.montaz_show"]:
+        reload= False
+    elif reload:
         reload= False
         print(curecnt_window)
         nextRunFileName= curecnt_window
