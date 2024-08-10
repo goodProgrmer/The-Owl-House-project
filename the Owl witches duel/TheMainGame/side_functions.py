@@ -142,7 +142,7 @@ def tutorial_blit(surface,x_start, key_surface,char_str):
     surface.blit(key_surface[1],(x_start+70,100))
     surface.blit(key_surface[2],(x_start+35,65))
     surface.blit(key_surface[3],(x_start+35,100))
-    surface.blit(font2.render("movment:", True, (186, 201, 0)),(x_start,30))
+    surface.blit(font2.render("movement:", True, (186, 201, 0)),(x_start,30))
     c_text= char_str.split("\n")
     for i in range(5):
         surface.blit(key_surface[4+i],(x_start+130,10+35*i))
