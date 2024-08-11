@@ -180,9 +180,10 @@ class luz(absCaracter):
         :param shotNum: the number of lisht shots. shotNum>=2
         :type center: (float,float)
         :type shotNum: int. shotNum>=2"""
+        stan_counter= light_stan_counter()
         for i in range(shotNum):
             self.tickAbleCreatedObjects.append(luzLightRay(center[0],center[1],self.enemy,(((2*pi)/(shotNum-1))*i),
-                                             5,20,self.floorLevel,100,1400,0.2))
+                                             5,20,self.floorLevel,100,1400,0.2,stan_counter))
 
     def imegedClockPaint(self,center,r,prosents,imageName):
         """paint clocked image in center. if self.pNum==2, it peint it from the other derction of x axis (in x= self.screen.get_width()-center[0])
@@ -345,6 +346,17 @@ class fireBall(absErrow):
     def get_aiming_y(self):
         return self.y
 
+class light_stan_counter:
+    def __init__(self):
+        self.stans= {}
+        
+    def tick(self):
+        for char in self.stans:
+            try:
+                char.stantimer= max(self.stans[char],char.stantimer)
+            except:
+                pass
+
 class luzLightRay(absErrow):
     """one light ray that luz shot
     :param x: x of the center of the ball
@@ -371,14 +383,19 @@ class luzLightRay(absErrow):
     :type blastSize: float
     :type damege: float
     :type stanDamage: float"""
-    def __init__(self,x,y,maneAnemy,a,destroyTime,v,floorlevel,leftWall,rightWall,stanDamage): #a-alpha, stp-start point
+    def __init__(self,x,y,maneAnemy,a,destroyTime,v,floorlevel,leftWall,rightWall,stanDamage,stan_counter_pointer): #a-alpha, stp-start point
         super().__init__(x,y,maneAnemy,a,destroyTime,v,floorlevel,leftWall,rightWall,0,0.01,0)
         self.stp= (x,y)
         self.stanDamage=stanDamage
+        self.stan_counter_pointer= stan_counter_pointer
 
     def onHit(self,en):
         try:
-            en.stantimer+=self.stanDamage
+            if en in self.stan_counter_pointer.stans:
+                self.stan_counter_pointer.stans[en]+=self.stanDamage
+            else:
+                self.stan_counter_pointer.stans[en]=self.stanDamage
+            self.stan_counter_pointer.tick()
         except:
             pass
     
