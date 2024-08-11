@@ -128,7 +128,7 @@ class gus(absCaracter):
             if random.random()>0.99:
                 self.times[1]+=15
             self.powerP-=self.powerPgenerateV+0.2
-            setIncriptionStr(self.pNum%2,"RD|(0,0,0)|(0,0,"+str(self.screen.get_width())+","+str(self.screen.get_height())+")|0\n"+getIncriptionStr(self.pNum%2))            
+            setIncriptionStr(self.pNum%2,"RDUZ|(0,0,0)|0|("+str(self.screen.get_width())+","+str(self.screen.get_height())+")|(0,0)\n"+getIncriptionStr(self.pNum%2))            
     def op3(self):
         """make every paramter from enemy screen and gus to disappire (on enemy screen)"""
         if self.powerP>1:

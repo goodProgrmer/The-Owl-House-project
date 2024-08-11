@@ -506,7 +506,7 @@ class wallplant(plant):
         self.isAttacking=False
     def tick(self):
         self.hp-=self.hpRedusingSpeed
-        if self.time>=self.gerowTime and not self.isAttacking:
+        if self.time>=self.gerowTime:
             self.speed=0
         super().tick()
     def attack(self,side):
@@ -517,13 +517,15 @@ class wallplant(plant):
         DEMEG=2.15
         ATAK_T=20
         SPEED=10
-        self.isAttacking=True
         self.torningMultiple=ATAK_ANGLE*side
         self.hitingDamage=DEMEG
         self.speed=self.SPEED
         self.maxT=ATAK_T
         self.time=0
         self.speed=SPEED
+        self.isAttacking=True
+
+        self.gerowTime= (2*pi/ATAK_ANGLE)/SPEED
         
     def growing(self):
         if not self.isAttacking:

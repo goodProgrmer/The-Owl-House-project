@@ -44,11 +44,20 @@ def singelCommandIncription(screen,commandStr):
         #the incription form: ".re PR:"+str(prosent)+":"+str(width)+":"+str(hight)+":"+str(color)
         #comand stracture: prosentRest(prosent,width,hight,color)
         return prosentRest(type_eval(commandParts[1]),type_eval(commandParts[2]),type_eval(commandParts[3]),type_eval(commandParts[4]))
-    if commandParts[0]=="RD":
+    if commandParts[0]=="RDUZ":
         #the incription form: "RD|"+str(color)+"|"+str(rectTuple)+"|"+str(width)+"\n"
         #comand stracture: pygame.draw.rect(surface, color, rect, width=0)
-        rectTuple=type_eval(commandParts[2])
-        pygame.draw.rect(screen,type_eval(commandParts[1]),pygame.Rect(rectTuple[0],rectTuple[1],rectTuple[2],rectTuple[3]),type_eval(commandParts[3]))
+        size= type_eval(commandParts[3])
+        pos= type_eval(commandParts[4])
+        pygame.draw.rect(screen,type_eval(commandParts[1]),pygame.Rect(pos[0],pos[1],size[0],size[1]),type_eval(commandParts[2]))
+        return
+    if commandParts[0]=="RDZ":
+        #the incription form: "RD|"+str(color)+"|"+str(rectTuple)+"|"+str(width)+"\n"
+        #comand stracture: pygame.draw.rect(surface, color, rect, width=0)
+        size= type_eval(commandParts[3])
+        positions= type_eval(commandParts[4])
+        for pos in positions:
+            pygame.draw.rect(screen,type_eval(commandParts[1]),pygame.Rect(pos[0],pos[1],size[0],size[1]),type_eval(commandParts[2]))
         return
     if commandParts[0]=="CD":
         #the incription form: "CD|"+str(color)+"|"+str(r)+"|"+str(center)+"\n"

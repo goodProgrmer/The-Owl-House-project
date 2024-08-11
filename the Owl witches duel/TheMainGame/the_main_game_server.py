@@ -18,6 +18,7 @@ import global_var
 import threading
 import random
 from Crypto.PublicKey import RSA
+import zlib
 
 
 def bg_music_support():
@@ -277,9 +278,11 @@ def main():
                         
                         for c in characters:
                             c.tick()
-
+                        drawIncreption.compretion()
+                        
                         for c in characters:
                             c.beforeSending()
+                        drawIncreption.compretion()
                         #calckTime=time.time()*1000
                         if i==0:
                                 for c in characters:
@@ -329,8 +332,10 @@ def main():
                                 drawIncreption.blitIncription(img,(1090,10))
                         
                         if plaingOnline:
-                                sendMesegUDP(server_socketUPD,drawIncreption.drawStrings[1],cliantAdressUPD,key)
+                                sendMesegUDP(server_socketUPD,zlib.compress(drawIncreption.drawStrings[1].encode()),cliantAdressUPD,key)
                         drewDecription.decription(screen,drawIncreption.drawStrings[0])
+                        print(len(zlib.compress(drawIncreption.drawStrings[0].encode())))
+                        #print(drawIncreption.drawStrings[0])
                         pygame.draw.rect(screen,(100,100,100), pygame.Rect(0,600,1500,600))
                         global_var.screen.blit(bg,(0,0))
                         if i==0:

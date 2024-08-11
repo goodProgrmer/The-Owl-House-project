@@ -18,6 +18,7 @@ import shutil
 import os
 from Crypto.PublicKey import RSA
 import threading
+import zlib
 
 def loading(loading_end):
         global SERVER_IP
@@ -167,10 +168,9 @@ def main():
 
                 #UDP comunication
                 sendMesegUDP(UDPsock,commandStr,server_addressUDP,key)
-                recvStr=unpucketMasegUDP(UDPsock)
+                recvStr=unpucketMasegUDP(UDPsock,False)
                 if recvStr!=None:
-                    drawStr=recvStr
-
+                    drawStr=zlib.decompress(recvStr).decode()
                 #TCP comunication
                 TCP_meseg=unpucketMasegTCP(TCPsock)
                 if TCP_meseg!="":

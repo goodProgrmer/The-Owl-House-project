@@ -1,3 +1,5 @@
+from usefull_classes.veriable_eval import type_eval
+
 def init(): # initial drawStrings
     global drawStrings
     drawStrings=["",""] # drawStrings[0] for player 1 and drawStrings[2] for player 2
@@ -27,6 +29,7 @@ def drawFilledArcIncription(color,r,center,stA,endA,isForP1=True,isForP2=True):
     :param isForP2: does it supposed to write the command in drawStrings[1]
     :type isForP1: bool
     :type isForP2: bool"""
+    r,center= tuple_to_int((r,center))
     if isForP1:
         drawStrings[0]+="DFA|"+str(color)+"|"+str(r)+"|"+str(center)+"|"+str(round(stA,2))+"|"+str(round(endA,2))+"\n"
     if isForP2:
@@ -42,6 +45,7 @@ def imegedClockImgIncription(r,prosents,imageName):
     :type imageName: string
     :return: command of drawing clock img according to the protocol
     :rtype: string"""
+    r= to_int(r)
     return ".re ICI:"+str(r)+":"+str(prosents)+":"+imageName
 
 def prosentRestIncription(prosent,width,hight,color):
@@ -60,7 +64,10 @@ def prosentRestIncription(prosent,width,hight,color):
     :type isForP2: bool
     :return: command of creating prosent rect according to the protocol
     :rtype: string"""
+    width,hight= tuple_to_int((width,hight))
+    prosent= round(prosent,2)
     return ".re PR:"+str(prosent)+":"+str(width)+":"+str(hight)+":"+str(color)
+
 
 def rectDrewIncription(color,rectTuple,width=0,isForP1=True,isForP2=True):
     """append command of drawing rect to drawStrings[0] and/or drawStrings[1] (acording to paramiters) according to the protocol
@@ -74,11 +81,11 @@ def rectDrewIncription(color,rectTuple,width=0,isForP1=True,isForP2=True):
     :param isForP2: does it supposed to write the command in drawStrings[1]
     :type isForP1: bool
     :type isForP2: bool"""
-    rectTuple= (int(rectTuple[0]),int(rectTuple[1]),int(rectTuple[2]),int(rectTuple[3]))
+    color,rectTuple,width= tuple_to_int((color,rectTuple,width))
     if isForP1:
-        drawStrings[0]+="RD|"+str(color)+"|"+str(rectTuple)+"|"+str(width)+"\n"
+        drawStrings[0]+="RD|"+str(color)+"|"+str(width)+"|"+str(rectTuple[2:])+"|"+str(rectTuple[:2])+"\n"
     if isForP2:
-        drawStrings[1]+="RD|"+str(color)+"|"+str(rectTuple)+"|"+str(width)+"\n"
+        drawStrings[1]+="RD|"+str(color)+"|"+str(width)+"|"+str(rectTuple[2:])+"|"+str(rectTuple[:2])+"\n"
 
 def circleDrewIncription(color,r,center,isForP1=True,isForP2=True):
     """append command of drawing circle to drawStrings[0] and/or drawStrings[1] (acording to paramiters) according to the protocol
@@ -92,6 +99,7 @@ def circleDrewIncription(color,r,center,isForP1=True,isForP2=True):
     :param isForP2: does it supposed to write the command in drawStrings[1]
     :type isForP1: bool
     :type isForP2: bool"""
+    r,center= tuple_to_int((r,center))
     if isForP1:
         drawStrings[0]+="CD|"+str(color)+"|"+str(r)+"|"+str(center)+"\n"
     if isForP2:
@@ -111,6 +119,7 @@ def lineDrewIncription(color, start_pos, end_pos, width=1,isForP1=True,isForP2=T
     :param isForP2: does it supposed to write the command in drawStrings[1]
     :type isForP1: bool
     :type isForP2: bool"""
+    start_pos, end_pos, width= tuple_to_int((start_pos, end_pos, width))
     if isForP1:
         drawStrings[0]+="LD|"+str(color)+"|"+str(start_pos)+"|"+str(end_pos)+"|"+str(width)+"\n"
     if isForP2:
@@ -126,6 +135,7 @@ def blitIncription(imageSrc,pos,isForP1=True,isForP2=True):
     :param isForP2: does it supposed to write the command in drawStrings[1]
     :type isForP1: bool
     :type isForP2: bool"""
+    pos= tuple_to_int(pos)
     if isForP1:
         appendStr= "B|"+imageSrc+"|"+str(pos)+"\n"
         drawStrings[0]+= appendStr
@@ -145,6 +155,7 @@ def polygonIncription(color, points, width=0,isForP1=True,isForP2=True):
     :param isForP2: does it supposed to write the command in drawStrings[1]
     :type isForP1: bool
     :type isForP2: bool"""
+    points, width= tuple_to_int((points, width))
     if isForP1:
         drawStrings[0]+="P|"+str(color)+"|"+str(points)+"|"+str(width)+"\n"
     if isForP2:
@@ -164,8 +175,11 @@ def textDrawIncription(fontName, fontNum, text, color):
     :rtype: string"""
     return ".re TD:"+str(fontName)+":"+str(fontNum)+":"+str(text)+":"+str(color)
 
+
 def rotatedfilledSurfaseCreateIncription(size,color,a):
     """return the command of creating surface, filling it and rotating it according to the protocol"""
+    size= tuple_to_int(size)
+    a= roand(a,3)
     return ".re RFSC:"+str(size)+":"+str(color)+":"+str(a)
 
 def rotatedResizedImageIncription(img,size_multiples,a):
@@ -173,6 +187,7 @@ def rotatedResizedImageIncription(img,size_multiples,a):
     :param img: the image to rotate
     :param size_multiples: the multiple of the size in x and y
     :param a: the angle to rotate the image"""
+    a= roand(a,3)
     return ".re RRI:"+str(img)+":"+str(size_multiples)+":"+str(a)
 
 #low level incription
@@ -191,3 +206,47 @@ def setIncriptionStr(placeNum,string):
     :type placeNum: int (0 or 1)
     :type string: string"""
     drawStrings[placeNum]= string
+
+def rect_zip(string):
+    #ziping all rects with same size,color,width to one line
+    lines= string.split("\n")
+    rects={}
+    i=0
+    while i<len(lines):
+        l= lines[i]
+        if l[:3]=="RD|":
+            last_split= l.rfind("|")
+            if l[:last_split+1] in rects:
+                rects[l[:last_split+1]].append(type_eval(l[last_split+1:]))
+            else:
+                rects[l[:last_split+1]]=[type_eval(l[last_split+1:])]
+            lines.pop(i)
+        else:
+            i+=1
+
+    string= "\n".join(lines)
+    
+    for key in rects.keys():
+        string+="RDZ|"+key[3:]+str(rects[key])+"\n"
+    
+    return string
+    
+def compretion():
+    drawStrings[0]= rect_zip(drawStrings[0])
+    drawStrings[1]= rect_zip(drawStrings[1])
+
+#to ints
+def to_int(num):
+    return int(round(num,0))
+
+def tuple_to_int(tup):
+    ans= list(tup)
+    for i in range(len(ans)):
+        if type(ans[i]) in [float,int]:
+            ans[i]= to_int(ans[i])
+        elif type(ans[i]) in [list,tuple]:
+            ans[i]= tuple_to_int(ans[i])
+        else:
+            raise Exception("tuple_to_int: uncorrect type: "+str(ans[i])+"-"+str(type(ans[i])))
+    ans= tuple(ans)
+    return ans

@@ -16,7 +16,8 @@ def sendMesegUDP(sock,string,addres,key):#key value isn't relevant enymore
     :type address: string (IP addres)
     :type key: RSA key"""
     #string= increption(string.encode(),key)
-    string= string.encode()
+    if type(string)==str:
+        string= string.encode()
     length=str(len(string))
     lengthOfLength=str(len(length))
     lengthOfLength=(2-len(lengthOfLength))*"0"+lengthOfLength
@@ -42,7 +43,7 @@ def sendMesegTCP(sock,string,key): #key value isn't relevant enymore
     sock.send((lengthOfLength+length).encode()+string)
     print("game send:",string)
 
-def unpucketMasegUDP(sock):
+def unpucketMasegUDP(sock,decode=True):
     """unpuck meseg that sended by UDP according to the basic protocol (appending length and length of the length and doing incription)
     :param sock: the socket from which the meseg should arrive
     :type sock: socket.socket
@@ -60,7 +61,9 @@ def unpucketMasegUDP(sock):
             msg=msg[2:]
             length= int(msg[:lengthOfTheLength].decode())
             msg=msg[lengthOfTheLength:]
-            string= msg[:length].decode()
+            string= msg[:length]
+            if decode:
+                string= string.decode()
             
         
     except Exception as exc:
