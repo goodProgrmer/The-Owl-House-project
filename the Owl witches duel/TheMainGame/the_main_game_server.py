@@ -297,8 +297,8 @@ def main():
                                 print(winerInfo)
                                 done = True
                                 global_var.nextRunFileName= afterPlaying
-                                msg= ("WIN|"+winerInfo+", characters' HP: "+type(characters[0]).__name__+", "+str(characters[0].hp)+
-                                             " "+type(characters[1]).__name__+" "+str(characters[1].hp))
+                                msg= ("WIN|"+winerInfo+", characters' HP: "+type(characters[0]).__name__+", "+str(int(characters[0].hp))+
+                                             " "+type(characters[1]).__name__+" "+str(int(characters[1].hp)))
                                 global_var.data= msg[4:]
                                 print(global_var.data)
                                 if plaingOnline:
