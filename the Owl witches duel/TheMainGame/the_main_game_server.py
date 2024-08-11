@@ -334,7 +334,7 @@ def main():
                         if plaingOnline:
                                 sendMesegUDP(server_socketUPD,zlib.compress(drawIncreption.drawStrings[1].encode()),cliantAdressUPD,key)
                         drewDecription.decription(screen,drawIncreption.drawStrings[0])
-                        print(len(zlib.compress(drawIncreption.drawStrings[0].encode())))
+                        #print(len(zlib.compress(drawIncreption.drawStrings[0].encode())))
                         #print(drawIncreption.drawStrings[0])
                         pygame.draw.rect(screen,(100,100,100), pygame.Rect(0,600,1500,600))
                         global_var.screen.blit(bg,(0,0))

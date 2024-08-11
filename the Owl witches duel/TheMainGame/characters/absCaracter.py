@@ -708,6 +708,7 @@ class hitablePartBlock:
         self.isActive=True
         self.saveParam=saveParam #some thing that you need to save in the object
         supportedChar.supporters.append(self)
+        self.hp=100
     def paint(self):
         """paint this rect"""
         rectDrewIncription((0,255,0),(self.x,self.y,self.size[0],self.size[1]),2)
@@ -896,6 +897,8 @@ class plant:
         :type damage: int
         :type stanT: int"""
         self.hp-=damage*self.selfDemegMultipel
+        for block in self.plantBlocks:
+            block.hp= self.hp
 
     def turget(self):
         """get the courdinate of the target

@@ -88,9 +88,9 @@ class willow(absCaracter):
             self.times[1]=self.timeFromStart
             
             if self.lookDirection=="moveN":
-                self.tickAbleCreatedObjects.append(wallplant(self.x-30,self.floorLevel,20,self,10,2,25,0.2))
+                self.tickAbleCreatedObjects.append(wallplant(self.x-30,self.floorLevel,20,self,10,9,25,0.2))
             else:
-                self.tickAbleCreatedObjects.append(wallplant(self.x+self.size[0]+30,self.floorLevel,20,self,10,2,25,0.2))
+                self.tickAbleCreatedObjects.append(wallplant(self.x+self.size[0]+30,self.floorLevel,20,self,10,9,25,0.2))
         pass
     
     def op3(self):

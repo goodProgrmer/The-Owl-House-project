@@ -179,7 +179,7 @@ def textDrawIncription(fontName, fontNum, text, color):
 def rotatedfilledSurfaseCreateIncription(size,color,a):
     """return the command of creating surface, filling it and rotating it according to the protocol"""
     size= tuple_to_int(size)
-    a= roand(a,3)
+    a= round(a,3)
     return ".re RFSC:"+str(size)+":"+str(color)+":"+str(a)
 
 def rotatedResizedImageIncription(img,size_multiples,a):
@@ -187,7 +187,7 @@ def rotatedResizedImageIncription(img,size_multiples,a):
     :param img: the image to rotate
     :param size_multiples: the multiple of the size in x and y
     :param a: the angle to rotate the image"""
-    a= roand(a,3)
+    a= round(a,3)
     return ".re RRI:"+str(img)+":"+str(size_multiples)+":"+str(a)
 
 #low level incription
