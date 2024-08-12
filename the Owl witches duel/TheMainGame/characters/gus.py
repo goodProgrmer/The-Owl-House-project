@@ -174,7 +174,7 @@ class gus(absCaracter):
             if self.stantimer!=0:
                 return
             if -self.move_v<=self.vy<0.1:
-                self.vy=-self.move_v
+                self.vy=-self.move_v*2
             self.lastComand="jump"
         else:
             super().jump()
@@ -184,7 +184,7 @@ class gus(absCaracter):
             if self.stantimer!=0:
                 return
             if self.move_v>=self.vy>-0.1:
-                self.vy=self.move_v
+                self.vy=self.move_v*2
             self.lastComand="down"
         else:
             super().down()
