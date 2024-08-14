@@ -9,7 +9,7 @@ class gus(absCaracter):
     :type screen: pygame.surface
     :type pNum: int"""
     def __init__(self,screen,pNum):
-        super().__init__(screen,pNum,gusMovinator(self),[1,2,3,4,5])
+        super().__init__(screen,pNum,gusMovinator(self),[2,4,1,5,3])
 
         #parameters for quick change
         self.telportDistens=200
@@ -77,6 +77,16 @@ class gus(absCaracter):
             blitIncription(prosentRestIncription(self.powerP,powerPWid,20,(0,0,255)),powerPPos,playersWisebility[0],playersWisebility[1])
         else:
             blitIncription(prosentRestIncription(self.powerP,powerPWid,20,(0,0,255)),(self.screen.get_width()-powerPPos[0]-powerPWid,powerPPos[1]),playersWisebility[0],playersWisebility[1])
+
+        font = pygame.font.SysFont("Algerian", 13)
+        text= font.render("consentration", True, (0, 128, 0))
+        textRect = text.get_rect()
+        if self.pNum==1:
+            textRect.center= (powerPPos[0]+powerPWid/2, powerPPos[1]+9)
+        else:
+            textRect.center= (self.screen.get_width()-powerPPos[0]-powerPWid/2, powerPPos[1]+9)
+
+        blitIncription(textDrawIncription("Algerian", 13,"consentration",(186, 201, 0)),textRect.topleft,playersWisebility[0],playersWisebility[1])
 
         flyingPPos=(120,80) #powerP display posizion for player 1
         flyingPWid=100 #powerP display width

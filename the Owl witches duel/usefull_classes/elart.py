@@ -28,7 +28,7 @@ def elart(text,rect_tuple,font=None):
     s.set_alpha(128)
     s.fill((0,0,0))
     global_var.screen.blit(s,(0,0))
-    back_ground= global_var.screen
+    back_ground= global_var.screen.copy()
 
     #pygame variable init
     done= False
@@ -39,23 +39,29 @@ def elart(text,rect_tuple,font=None):
 
     #values to display
     buttons=[button(quitElart,(rect_tuple[0]+10, rect_tuple[1]+rect_tuple[3]-10-BUUTON_H, rect_tuple[2]-20, BUUTON_H),(255,0,0),"ok")]
-    text= font.render(text, True, (186, 201, 0))
+
+    #creating alert screen
+    pygame.draw.rect(back_ground, (0,0,160), pygame.Rect(rect_tuple))
+    
+    text= text.split("\n")
+    text_y= rect_tuple[1]+10
+    
+    for i in range(len(text)):
+        put_text= font.render(text[i], True, (186, 201, 0))
+        back_ground.blit(put_text, (rect_tuple[0]+10, text_y))
+        text_y+= put_text.get_height()+10
+    
 
     while not done:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     done = True
                     return True
+
+            global_var.screen.blit(back_ground, (0,0))
             
-            global_var.screen.blit(back_ground,(0,0))
-
-            pygame.draw.rect(global_var.screen, (0,0,160), pygame.Rect(rect_tuple))
-
             for b in buttons:
                 b.tick()
-
-            #sending prpose paint
-            global_var.screen.blit(text, (rect_tuple[0]+10, rect_tuple[1]+10))
             
             pygame.display.flip()
             clock.tick(24)

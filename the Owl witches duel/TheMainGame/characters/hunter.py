@@ -10,7 +10,7 @@ class hunter(absCaracter):
     :type screen: pygame.surface
     :type pNum: int"""
     def __init__(self,screen,pNum):
-        super().__init__(screen,pNum,hanterMovinator(self),[1,2,3,4,5])
+        super().__init__(screen,pNum,hanterMovinator(self),[1,4,2,3,5])
 
         #parameters for quick change
         self.telportDistens=300

@@ -8,7 +8,7 @@ class luz(absCaracter):
     :type screen: pygame.surface
     :type pNum: int"""
     def __init__(self,screen,pNum):
-        super().__init__(screen,pNum,luzMovinator(self),[1,2,3,4,5])
+        super().__init__(screen,pNum,luzMovinator(self),[1,5,3,4,2])
 
         self.times= [-20,0,-20,0,-200]
         

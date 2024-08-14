@@ -146,6 +146,7 @@ def main():
                         if event.type == pygame.QUIT:
                                 sendMesegTCP(TCPsock,"EXIT 2",key)
                                 done = True
+                                print("done")
                 
                 pressed = pygame.key.get_pressed()
 
@@ -214,6 +215,7 @@ def main():
                 t+=1
                 clock.tick(30)
 
+        print("closing")
         #close sockets and music
         UDPsock.close()
         TCPsock.close()

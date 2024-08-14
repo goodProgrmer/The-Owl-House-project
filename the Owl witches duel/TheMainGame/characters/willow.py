@@ -11,7 +11,7 @@ class willow(absCaracter):
     :type screen: pygame.surface
     :type pNum: int"""
     def __init__(self,screen,pNum):
-        super().__init__(screen,pNum,willowMovinator(self),[1,2,3,4,5])
+        super().__init__(screen,pNum,willowMovinator(self),[4,5,2,3,1])
 
         self.times= [-20,-20,0,-20,-20]
         #[0]- time of last op1 activate
@@ -104,13 +104,19 @@ class willow(absCaracter):
             self.movinator.plant_up_init()
             self.op3Direction="up"
         
-        
+
+    def has_avilable_plantwalls(self):
+        """check does willow has plantwalls avilable for wall strike"""
+        for obj in self.tickAbleCreatedObjects:
+            if isinstance(obj,wallplant) and not obj.isAttacking:
+                return True
+        return False
 
     def op4(self):
         """all wall plants start grow in cercle in the derection of the enemy"""
         powerCoust=40
         plants_enemys_lst=[]
-        if self.timeFromStart-self.times[3]>=20 and self.powerP[0]>=powerCoust:
+        if self.timeFromStart-self.times[3]>=20 and self.powerP[0]>=powerCoust and self.has_avilable_plantwalls():
             self.powerP[0]-=powerCoust
             self.times[3]=self.timeFromStart
             #plants_enemys_lst list filling

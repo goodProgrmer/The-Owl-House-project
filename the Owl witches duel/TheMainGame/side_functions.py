@@ -90,26 +90,26 @@ def loading_display(end):
 def tutorial_paint_init(keys,chars):
     #keys[i]==[] if the player dont play from this computer
     char_str= {"hunter":"""-teleport (from self)
+-ground punch
 -punch
 -teleport (to enemy)
--ground punch
--ricochet shots""","emity":"""-punch
--shield
--create golem
+-ricochet shots""","emity":"""-throw golem head
 -slime bubble
--throw golem head""","luz":"""-stunning light
--ice wall
+-punch
+-create golem
+-shield""","luz":"""-stunning light
+-iceberg jump
 -fire ball
 -vine attack
--iceberg jump""","willow":"""-triple vine
+-ice wall""","willow":"""-wall strike
+-power plant
 -plant wall
 -dig
--wall strike
--power plant""","gus":"""-punch
--illusion 1 (blackout)
--illusion 2 (vanish)
+-triple vine""","gus":"""-illusion 1 (blackout)
 -clones
--fly/stop flying"""} # Restrict to 16 chars per move.
+-punch
+-fly/stop flying
+-illusion 2 (vanish)"""} # Restrict to 16 chars per move.
     font1= pygame.font.SysFont("Arial", 20) #for the key text
     tutorial= pygame.transform.scale(pygame.image.load("TheMainGame/images/tutorial.png"),(500,200))
     tutorial_r= pygame.transform.flip(tutorial,True,False)

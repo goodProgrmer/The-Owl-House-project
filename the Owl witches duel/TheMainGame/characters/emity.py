@@ -10,7 +10,7 @@ class emity(absCaracter):
     :type pNum: int"""
     
     def __init__(self,screen,pNum):
-        super().__init__(screen,pNum,emityMovinator(self),[1,2,3,4,5])
+        super().__init__(screen,pNum,emityMovinator(self),[5,4,1,3,2])
         #self.displayAnimation= False
     
         

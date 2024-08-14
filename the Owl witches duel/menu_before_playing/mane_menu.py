@@ -18,6 +18,10 @@ def logout():
     global_var.username= None
     toOtherFile("menu_before_playing.mane_menu")
 
+def help():
+    """called when the how to help you button pushed"""
+    global_var.alert_data= ("you can watch our behind the scenes video on youtube\n(the owl house comp game behind the scenes) (please do it).\nthat how we get money",(500,0,600,150))
+
 def main():
     """the code of this window. it's screen is in global_var.screen."""
     global done
@@ -27,7 +31,8 @@ def main():
 
     buttons=[button(lambda: toOtherFile("menu_before_playing.game_menu"),(700,200,200,100),(255,0,0),text.encode("utf-8")),
              button(lambda: toOtherFile("menu_before_playing.login.login"),(1100,600,100,50),(255,0,0),"login",font= pygame.font.SysFont("Edwardian Script ITC", 40)),
-             button(lambda: toOtherFile("settings.onePlayer"),(700,300,200,100),(255,0,0),"settings")]
+             button(lambda: toOtherFile("settings.onePlayer"),(700,300,200,100),(255,0,0),"settings"),
+             button(help,(600,400,400,100),(255,0,0),"help you your free")]
 
     if global_var.username!=None:
         buttons[1].text= "logout"
