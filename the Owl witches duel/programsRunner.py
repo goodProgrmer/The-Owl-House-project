@@ -5,6 +5,7 @@ import menu_before_playing.mane_menu
 import menu_before_playing.intro
 import menu_before_playing.game_menu
 import menu_before_playing.playAgain
+import menu_before_playing.about_us
 import menu_before_playing.friendGame.friendGame
 import menu_before_playing.char_choose.choose
 import menu_before_playing.char_choose.waitingWindow
@@ -27,6 +28,7 @@ def main():
     t= threading.Thread(target=connection_support)
     t.start() #running the functionof conection&conection check answering as thread
     firstRunFile="menu_before_playing.intro" #the window to run
+    #firstRunFile="menu_before_playing.about_us" #the window to run
     
     global_var.nextRunFileName=firstRunFile #saving it in global_var
 

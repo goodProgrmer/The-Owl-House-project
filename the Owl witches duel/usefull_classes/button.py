@@ -19,7 +19,7 @@ class button:
     :type font: pygame.font
     :type image: pygame.surface
     :type onpose_img: pygame.surface"""
-    def __init__(self,onclick,rect_tuple,color,text="",font=None,image="None", onpose_img= "None",text_indent=(0,0),onpose_text_indent=(0,0)):
+    def __init__(self,onclick,rect_tuple,color,text="",font=None,image="None", onpose_img= "None",text_indent=(0,0),onpose_text_indent=(0,0),t_color= (186, 201, 0)):
         #rect_tuple corectens to in (in case it had arguments that are floot)
         rect_tuple= (int(rect_tuple[0]), int(rect_tuple[1]), int(rect_tuple[2]), int(rect_tuple[3]))
         #onpose_img- the image when your mouse on the button
@@ -48,6 +48,7 @@ class button:
             self.onpose_img= pygame.transform.scale(self.onpose_img, (rect_tuple[2],rect_tuple[3]))
 
         self.clicked=False
+        self.t_color = t_color
     def tick(self):
         """pass 1 frame for this button and paint it"""
         self.paint()
@@ -90,7 +91,7 @@ class button:
                 img= self.onpose_img
             global_var.screen.blit(img,(self.rect_tuple[0],self.rect_tuple[1]))
         #text
-        text = self.font.render(self.text, True, (186, 201, 0))
+        text = self.font.render(self.text, True, self.t_color)
         textRect = text.get_rect()
         textRect.center=(self.rect_tuple[0]+self.rect_tuple[2]/2,self.rect_tuple[1]+self.rect_tuple[3]/2)
         if self.rect_tuple[0]<mp[0]<self.rect_tuple[0]+self.rect_tuple[2] and self.rect_tuple[1]<mp[1]<self.rect_tuple[1]+self.rect_tuple[3] and self.onpose_img!=None:

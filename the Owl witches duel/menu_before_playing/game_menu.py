@@ -45,7 +45,8 @@ def main():
     global_var.unable(buttons[3])
     buttons[3].onclick= lambda: print("need to be chenged")
 
-    if not global_var.is_connected:
+    special_ip_check= True
+    if not global_var.is_connected or (global_var.server_address[0]=="127.0.0.1" or (not special_ip_check)):
         global_var.unable(buttons[0])
         global_var.unable(buttons[1])
 

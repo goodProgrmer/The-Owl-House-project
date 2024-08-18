@@ -48,7 +48,8 @@ def init():
     data=None #information pasing bitween windows (that not one of the folowing veriables)
 
     #to comunication with server
-    SERVER_IP = input("server ip: ")
+    SERVER_IP = input("server ip (press enter to offline game): ")
+    print("you may avoid anything the program prints in the window from that point.")
     SERVER_PORT = 8820
     server_address = (SERVER_IP, SERVER_PORT)
     server_TCP_sock = socket.socket()

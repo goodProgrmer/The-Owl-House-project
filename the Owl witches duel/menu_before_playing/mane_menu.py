@@ -27,12 +27,12 @@ def main():
     global done
     done = False
     clock = pygame.time.Clock()
-    text="game"
 
-    buttons=[button(lambda: toOtherFile("menu_before_playing.game_menu"),(700,200,200,100),(255,0,0),text.encode("utf-8")),
+    buttons=[button(lambda: toOtherFile("menu_before_playing.game_menu"),(700,175,200,100),(255,0,0),"game"),
              button(lambda: toOtherFile("menu_before_playing.login.login"),(1100,600,100,50),(255,0,0),"login",font= pygame.font.SysFont("Edwardian Script ITC", 40)),
-             button(lambda: toOtherFile("settings.onePlayer"),(700,300,200,100),(255,0,0),"settings"),
-             button(help,(600,400,400,100),(255,0,0),"help you your free")]
+             button(lambda: toOtherFile("settings.onePlayer"),(700,275,200,100),(255,0,0),"settings"),
+             button(lambda: toOtherFile("menu_before_playing.about_us"),(700,375,200,100),(255,0,0),"about us"),
+             button(help,(550,475,500,100),(255,0,0),"help you your free")]
 
     if global_var.username!=None:
         buttons[1].text= "logout"

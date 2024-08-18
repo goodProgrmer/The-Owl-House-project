@@ -11,7 +11,7 @@ class prossent_line:
     :type length: float
     :type start_prossent: float
     :type place: (float,float)"""
-    def __init__(self,length,start_prossent,place,corsor_img="None",line_img="None"):
+    def __init__(self,length,start_prossent,place, orientation="horizontal",corsor_img="None",line_img="None"):
         self.L= length
         self.place= place
 
