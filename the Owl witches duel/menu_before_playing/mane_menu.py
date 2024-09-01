@@ -20,7 +20,7 @@ def logout():
 
 def help():
     """called when the how to help you button pushed"""
-    global_var.alert_data= ("we planing to relis behind the schins video on youtube so check it sometimes.",(500,0,600,150))
+    global_var.alert_data= ('''We're planning to release a "Behind the Scenes" video on Youtube soon.\nCheck it out!''',(500,0,600,150))
 
 def main():
     """the code of this window. it's screen is in global_var.screen."""

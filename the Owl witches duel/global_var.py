@@ -60,7 +60,7 @@ def init():
 
     #to comunication with server
     SERVER_IP = input("server ip (press enter for offline game): ")
-    print("you may avoid anything the program prints in the window from that point.")
+    print("you may avoid anything the program prints in the window from this point.")
     SERVER_PORT = 8820
     server_address = (SERVER_IP, SERVER_PORT)
     server_TCP_sock = socket.socket()
