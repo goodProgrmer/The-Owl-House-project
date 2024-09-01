@@ -6,6 +6,8 @@ from usefull_classes.elart import elart
 import random
 from Crypto.PublicKey import RSA
 from usefull_classes.veriable_eval import type_eval
+import time
+import os
 
 def init():
     """initializing every veriable in global var"""
@@ -44,11 +46,20 @@ def init():
     global down_info_img
     global alert_data
     global fan_made_logo
+    global past_frames_t
+    global frames_to_evereg
+
+    #checking that there is video saving place
+    if os.path.exists("temp"):
+        raise Exception("there is alredy derectory named temp")
+
+    frames_to_evereg= 20
+    past_frames_t= [0]*frames_to_evereg
     
     data=None #information pasing bitween windows (that not one of the folowing veriables)
 
     #to comunication with server
-    SERVER_IP = input("server ip (press enter to offline game): ")
+    SERVER_IP = input("server ip (press enter for offline game): ")
     print("you may avoid anything the program prints in the window from that point.")
     SERVER_PORT = 8820
     server_address = (SERVER_IP, SERVER_PORT)
@@ -221,7 +232,12 @@ def before_menu_screen_display():
     global screen
     global wind_chenge_t
     global alert_data
+    global past_frames_t
+    global frames_to_evereg
 
+    #print("frames per second:",frames_to_evereg/(time.time()-past_frames_t[0]))
+    past_frames_t.pop(0)
+    past_frames_t.append(time.time())
     #glitter draw
     if wind_chenge_t< glitterT and prew_window_screen!=None:
         glitter_x= 1500*(glitterT-wind_chenge_t)/glitterT
@@ -268,6 +284,19 @@ def before_menu_screen_display():
             raise internalException("exit during elart")
         alert_data=None
 
+    #screen_video()
+    #screenphoto()
+
+def screen_video():
+    global frame_num
+    try:
+        frame_num+=1
+    except:
+        frame_num=0
+
+    if not os.path.exists("temp"):
+        os.mkdir("temp")
+    pygame.image.save(screen,"temp/"+str(frame_num)+".jpg")
 
 def screenphoto():
     """doing screen photo and save it in temp.png if user pussed p key. NOTE: it use progect book writing and happen only if you call this function in the end of before_menu_screen_display"""

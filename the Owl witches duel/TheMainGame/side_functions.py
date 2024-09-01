@@ -167,10 +167,13 @@ def toChar(num):
             return u"\u2193"
 
 def tutorial_paint(draw):
-    if draw[0]:
+    if draw[0] and draw[1]:
         global_var.screen.blit(img_dict.imegesDict["tutorial"],(240,10))
-    if draw[1]:
         global_var.screen.blit(img_dict.imegesDict["tutorial-r"],(760,10))
+    elif draw[0]:
+        global_var.screen.blit(img_dict.imegesDict["tutorial"],(int(750-img_dict.imegesDict["tutorial"].get_width()/2),10))
+    elif draw[1]:
+        global_var.screen.blit(img_dict.imegesDict["tutorial-r"],(int(750-img_dict.imegesDict["tutorial-r"].get_width()/2),10))
     
     
 

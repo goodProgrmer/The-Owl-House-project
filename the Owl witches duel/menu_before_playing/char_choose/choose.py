@@ -124,6 +124,10 @@ def main():
     font= pygame.font.SysFont("Algerian", 50)
     instractions= font.render(instractions,True,(186, 201, 0))
 
+    #gus special instractions
+    font2= pygame.font.SysFont("Algerian", 30)
+    gus_disabled= font2.render("gus is unavible in offline games",True,(186, 201, 0))
+
     for i in range(len(chars)):
         #print("menu_before_playing\\char_choose\\chars_profiles\\"+chars[i]+".png")
         charImage= pygame.image.load("menu_before_playing\\char_choose\\chars_profiles\\"+chars[i]+".png")
@@ -179,6 +183,8 @@ def main():
                 pygame.draw.rect(global_var.screen, (255,0,0), pygame.Rect(frameP[0],frameP[1],choosing_button_size[0],choosing_button_size[1]),width=5)
 
             global_var.screen.blit(instractions,(525,475))
+            if not global_var.plaingOnline:
+                global_var.screen.blit(gus_disabled,(555,550))
 
             global_var.before_menu_screen_display()
             pygame.display.flip()

@@ -16,7 +16,6 @@ def main():
     """the code of this window. it's screen is in global_var.screen."""
     global done
     #this window will open only if one of the players win (not when one of them exit of the game)
-    global_var.pm.Channel(0).play(pygame.mixer.Sound('sounds/montuz.mp3'))
     
     plaingOnline= global_var.plaingOnline
     global_var.plaingOnline=True
@@ -45,6 +44,8 @@ def main():
     f= open("TheMainGame/images/montaz/p"+str(winner)+"/frames num.txt", "r")
     frame_num= int(f.read())
     f.close()
+
+    global_var.pm.Channel(0).play(pygame.mixer.Sound('sounds/montuz.mp3'))
 
     #show the montaz
     while not done:
