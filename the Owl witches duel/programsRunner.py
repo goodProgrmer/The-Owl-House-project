@@ -51,14 +51,14 @@ def main():
 
     #closing of the game
     global_var.done=True
-    t.join() #ending connection_support threading
     global_var.quit() #quit global_var (it quit pygame too)
+    t.join() #ending connection_support threading
 
 def connection_support():
     """every period of timedo the next thing:
     if there is no conection to server- trying to reconect to the server
     if there is conection to server- handeling conection check meseges"""
-    REPLAY_T= 60
+    REPLAY_T= 15
     while not global_var.done:
         time.sleep(1)
         global_var.t+=1
@@ -82,6 +82,8 @@ def connection_support():
         else:
             for address in global_var.server_address:
                 print(address)
+                if global_var.done:
+                    return
                 try:
                     global_var.server_TCP_sock.connect(address)
                     print("connected")

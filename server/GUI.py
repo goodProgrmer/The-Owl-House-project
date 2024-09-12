@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 import subprocess
 import threading
+import global_server_op
 
 def find_IP():
     string= subprocess.check_output(["ipconfig"]).decode()
@@ -94,6 +95,6 @@ def main():
         w.configure(font = ("Arial",20),state="disabled") 
         w.place(x = 100, y = 325)
     root.mainloop()
-    done= True
+    global_server_op.done= True
     
     

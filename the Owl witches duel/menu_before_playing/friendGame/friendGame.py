@@ -294,6 +294,10 @@ def main():
             global_var.screen.blit(Ptext, PTEXT_P)
             global_var.screen.blit(user_getting_text, USERTEXT_P)
 
+            pressed = pygame.key.get_pressed()
+            if pressed[pygame.K_RETURN]:
+                send_ask()
+
 
             global_var.before_menu_screen_display()
             pygame.display.flip()

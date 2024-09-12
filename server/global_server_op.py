@@ -76,7 +76,12 @@ def presence_check(sock):
     global sock_connect_msg
 
     print("presence_check start")
-    time.sleep(60) #so the server will have time to get user public key
+    for i in range(15):
+        time.sleep(1)
+        if done:
+            print("presence_check threading out")
+            return
+    #so the server will have time to get user public key
     if sock in sock_connect_msg:
         sock_connect_msg.pop(sock)
         return
@@ -89,7 +94,11 @@ def presence_check(sock):
     conected= True
     while conected:
         print("while start")
-        time.sleep(60)
+        for i in range(15):
+            time.sleep(1)
+            if done:
+                print("presence_check threading out")
+                return
         if sock in sock_connect_msg:
             #print(sock_connect_msg[sock])
             if sock_connect_msg[sock]:
@@ -132,6 +141,7 @@ def init():
     global sock_connect_msg
     global signed_in_usernames
     global online_matches
+    global done
     
     protocols_answer.login_protocol_op.init()
     sending_data_init()
@@ -161,3 +171,6 @@ def init():
 
     #for statistic
     online_matches=0
+
+    #for quiting the program
+    done= False

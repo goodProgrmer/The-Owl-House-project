@@ -20,7 +20,11 @@ def statistic_write():
         f= open("statistic.txt","w")
         f.write(to_write)
         f.close()
-        time.sleep(180)
+        for i in range(180):
+            time.sleep(1)
+            if global_server_op.done:
+                print("statistic_write threading out")
+                return
 
 def main():
     """running the server."""
@@ -30,8 +34,8 @@ def main():
     GUI.done= False
     print("server is up and running")
 
-    while True:
-        reading,writing,errors= select.select(list(global_server_op.sock_username.keys())+[global_server_op.server_socket],[],list(global_server_op.sock_username.keys()))
+    while not global_server_op.done:
+        reading,writing,errors= select.select(list(global_server_op.sock_username.keys())+[global_server_op.server_socket],[],list(global_server_op.sock_username.keys()),1)
         for sock in errors:
             global_server_op.sock_username.pop(sock)
         
@@ -68,6 +72,12 @@ def main():
                 protocols_answer.cloud_protocol_op.TCP_meseg_handle(msg[categoryInd + 1:], global_server_op.sock_username[sock], sock)
             elif msg[:categoryInd]=="PUBLIC KEY":
                 get_public_key(sock,msg[categoryInd + 1:])
+                
+    #for sock in global_server_op.sock_username.keys():
+    #    sock.close()
+    #global_server_op.server_socket.close()
+    print("server out")
 
 if __name__=="__main__":
     main()
+
