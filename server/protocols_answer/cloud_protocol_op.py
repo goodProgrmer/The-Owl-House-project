@@ -19,8 +19,6 @@ def TCP_meseg_handle(msg,username,SOCK):
     try:
         if splited[0]=="SETTINGS SAVE" and len(splited)==2:
             Settings_save(SOCK,username,splited[1])
-        elif splited[0]=="SETTINGS RECUEST":
-            Settings_request(SOCK,username)
     except:
         pass
 

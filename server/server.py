@@ -8,6 +8,7 @@ from collections import deque
 import time
 import threading
 import global_server_op
+import GUI
 
 def statistic_write():
     while True:
@@ -25,13 +26,15 @@ def main():
     """running the server."""
     global_server_op.init()
     threading.Thread(target= statistic_write).start()
+    threading.Thread(target= GUI.main).start()
+    GUI.done= False
     print("server is up and running")
 
     while True:
         reading,writing,errors= select.select(list(global_server_op.sock_username.keys())+[global_server_op.server_socket],[],list(global_server_op.sock_username.keys()))
         for sock in errors:
             global_server_op.sock_username.pop(sock)
-
+        
         for sock in reading:
             if sock==global_server_op.server_socket:
                 (new_socket, address) = global_server_op.server_socket.accept()

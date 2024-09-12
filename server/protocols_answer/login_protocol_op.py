@@ -89,13 +89,13 @@ def username_check(username,password):
     :return: as mentioned above
     :rtype: bool"""
 
-    try:
+    """try:
         int(username)
         return False
     except:
         pass
     if len(password)<8 or not contain_num(password):
-        return False
+        return False"""
 
     return (not "|" in username) and (not "\n" in username)
 
