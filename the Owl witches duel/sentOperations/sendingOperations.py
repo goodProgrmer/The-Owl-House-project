@@ -67,7 +67,10 @@ def recv_msg(sock,length):
     :rtype: bytes"""
     msg=b""
     while len(msg)<length:
-        msg+= sock.recv(length-len(msg))
+        msg_append= sock.recv(length-len(msg))
+        msg +=msg_append
+        if msg_append==b"":
+            raise Exception("socket is closed")
 
     if len(msg)>length:
         raise Exception("taked to mach")

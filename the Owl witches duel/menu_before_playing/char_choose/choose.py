@@ -126,7 +126,7 @@ def main():
 
     #gus special instractions
     font2= pygame.font.SysFont("Algerian", 30)
-    gus_disabled= font2.render("gus is unavible in offline games",True,(186, 201, 0))
+    gus_disabled= font2.render("gus is unavailable in offline games",True,(186, 201, 0))
 
     for i in range(len(chars)):
         #print("menu_before_playing\\char_choose\\chars_profiles\\"+chars[i]+".png")
@@ -184,7 +184,7 @@ def main():
 
             global_var.screen.blit(instractions,(525,475))
             if not global_var.plaingOnline:
-                global_var.screen.blit(gus_disabled,(555,550))
+                global_var.screen.blit(gus_disabled,(520,550))
 
             global_var.before_menu_screen_display()
             pygame.display.flip()

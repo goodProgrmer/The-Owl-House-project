@@ -42,7 +42,7 @@ def main():
     little_font= pygame.font.SysFont("Algerian", 23)
     title_font= pygame.font.SysFont("Algerian", 50)
     
-    texts= [((740,160),title_font.render("Sing up", True, (186, 201, 0))),
+    texts= [((740,160),title_font.render("Sign up", True, (186, 201, 0))),
             ((450,250),font.render("username:", True, (186, 201, 0))),
             ((450,410),font.render("password:", True, (186, 201, 0)))]
     entrens= [textEnterens((450, 290, 750, 100),(255,255,255)),

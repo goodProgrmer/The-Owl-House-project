@@ -24,6 +24,7 @@ def main():
     global done
     global entrens
     global username
+    #breakpoint()
 
     global_var.unconnected_exit_check("menu_before_playing.mane_menu")
     
