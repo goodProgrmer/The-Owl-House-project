@@ -22,6 +22,7 @@ from collections import deque
 import pygame
 import threading
 import time
+
 global_var.init()
 
 def main():

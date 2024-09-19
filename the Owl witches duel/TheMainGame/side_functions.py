@@ -105,11 +105,11 @@ def tutorial_paint_init(keys,chars):
 -power plant
 -plant wall
 -dig
--triple vine""","gus":"""-illusion 1 (blackout)
+-triple vine""","gus":"""-black (enemy screen)
 -clones
 -punch
 -fly/stop flying
--illusion 2 (vanish)"""} # Restrict to 16 chars per move.
+-vanish (enemy screen)"""} # Restrict to 16 chars per move.
     font1= pygame.font.SysFont("Arial", 20) #for the key text
     tutorial= pygame.transform.scale(pygame.image.load("TheMainGame/images/tutorial.png"),(500,200))
     tutorial_r= pygame.transform.flip(tutorial,True,False)
