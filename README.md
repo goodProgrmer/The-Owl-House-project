@@ -7,7 +7,7 @@ user manual:
 
 to play online:
 
-NOTE: this mode is user friendly (the enterence code works as it should) only if the users that want to play online are in the same ZireTier Network (free VPN provider)  witch I ask from the users to use.
+NOTE: this mode is user friendly (the enterence code works as it should) only if the users that want to play online are in the same ZireTier Network (free VPN provider)  which I ask from the users to use.
 
 NOTE: the online modes only work between two computers in the same network.
 1. run "server/server.py". Only one PC in the network must run it.
